@@ -26,4 +26,31 @@ describe("Burrito Builder", () => {
     .and("contain", "pico de gallo")
     .and("contain", "sour cream");
   });
-})
+
+  it("should submit an order", () => {
+    cy.intercept('http://localhost:3001/api/v1/orders', {fixture: "newOrder.json"});
+    cy.get("[data-cy=order-name-input]").type("rainbow")
+    .get("[data-cy=ingredient-btn]").contains("beans").click()
+    .get("[data-cy=ingredient-btn]").contains("lettuce").click()
+    .get("[data-cy=ingredient-btn]").contains("guacamole").click()
+    .get("[data-cy=ingredient-btn]").contains("cilantro").click()
+    .get("[data-cy=ingredient-btn]").contains("hot sauce").click()
+    .get("[data-cy=order-display]").contains("Order: beans, lettuce, guacamole, cilantro, hot sauce")
+    .get("[data-cy=submit-order-btn]").click();
+    cy.get("[data-cy=order-card]").should("have.length", 3); 
+    cy.get("[data-cy=order-card]").eq(2).should("contain", "rainbow")
+    .and("contain", "beans")
+    .and("contain", "lettuce")
+    .and("contain", "guacamole")
+    .and("contain", "cilantro")
+    .and("contain", "hot sauce");
+  });
+
+  it("should show error messages if form not filled out correctly", () => {
+    cy.get("[data-cy=submit-order-btn]").click();
+    cy.get("[data-cy=form-error-msg]").contains("We need a name for the order");
+    cy.get("[data-cy=order-name-input]").type("Sunny");
+    cy.get("[data-cy=submit-order-btn]").click();
+    cy.get("[data-cy=form-error-msg]").contains("Please select at least one ingredient");
+  });
+});

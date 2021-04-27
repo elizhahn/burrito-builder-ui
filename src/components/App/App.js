@@ -26,6 +26,7 @@ class App extends Component {
   sendOrder = (newOrder) => {
     submitOrder(newOrder)
     .then(order => {
+      console.log(order)
       this.setState({orders: [...this.state.orders, order]})
     })
     .catch(error => {
