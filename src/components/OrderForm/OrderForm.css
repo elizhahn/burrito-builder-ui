@@ -18,3 +18,8 @@
 .submit-btn {
   background-color: rgb(235, 10, 115);
 }
+
+.order-preview {
+  font-weight: 600;
+  font-size: 1.4em;  
+}

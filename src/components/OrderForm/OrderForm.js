@@ -77,7 +77,7 @@ class OrderForm extends Component {
           </ul>
         </div>
         {this.state.error && <p data-cy="form-error-msg">{this.state.error}</p>}
-        <p data-cy="order-display">Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
+        <p className="order-preview" data-cy="order-display">Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
         <button 
           className="submit-btn form-btn"
