@@ -1,6 +1,15 @@
+const checkForErrors = (response) => {
+  if(!response.ok) {
+    throw new Error(response.status)
+} else {
+    return response.json(); 
+}
+}
+
+
 export const getOrders = () => {
   return fetch('http://localhost:3001/api/v1/orders')
-      .then(response => response.json())
+      .then(response => checkForErrors(response))
 }
 
 export const submitOrder = (newOrder) => {
@@ -11,5 +20,5 @@ export const submitOrder = (newOrder) => {
     },
     body: JSON.stringify(newOrder)
   })
-  .then(response => response.json())
+  .then(response => checkForErrors(response))
 }
