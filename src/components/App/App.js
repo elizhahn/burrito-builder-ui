@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <main className="App">
         <header>
-          <h1>Burrito Builder</h1>
+          <h1 data-cy="App-title">Burrito Builder</h1>
           <OrderForm sendOrder={this.sendOrder}/>
         </header>
         {this.state.error && <p>{this.state.error}</p>}

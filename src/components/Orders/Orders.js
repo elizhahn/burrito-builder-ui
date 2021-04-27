@@ -4,7 +4,7 @@ import './Orders.css';
 const Orders = props => {
   const orderEls = props.orders.map((order, i) => {
     return (
-      <div key={i} className="order">
+      <div key={i} className="order" data-cy="order-card">
         <h3>{order.name}</h3>
         <ul className="ingredient-list">
           {order.ingredients.map((ingredient, i) => {
