@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./OrderForm.css";
 
 class OrderForm extends Component {
   constructor(props) {
@@ -47,7 +48,13 @@ class OrderForm extends Component {
     const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
     const ingredientButtons = possibleIngredients.map(ingredient => {
       return (
-        <button key={ingredient} name={ingredient} onClick={e => this.handleIngredientChange(e)} data-cy="ingredient-btn">
+        <button 
+          key={ingredient} 
+          name={ingredient} 
+          onClick={e => this.handleIngredientChange(e)} 
+          data-cy="ingredient-btn"
+          className="ingredient-btn form-btn"
+        >
           {ingredient}
         </button>
       )
@@ -55,20 +62,27 @@ class OrderForm extends Component {
 
     return (
       <form>
-        <input
-          type='text'
-          placeholder='Name'
-          name='name'
-          value={this.state.name}
-          onChange={e => this.handleNameChange(e)}
-          data-cy="order-name-input"
-        />
-
-        { ingredientButtons }
+        <div className="form-fields-container">
+          <input
+            className="form-name-input"
+            type='text'
+            placeholder='Name'
+            name='name'
+            value={this.state.name}
+            onChange={e => this.handleNameChange(e)}
+            data-cy="order-name-input"
+          />
+          <ul>
+          { ingredientButtons }
+          </ul>
+        </div>
         {this.state.error && <p data-cy="form-error-msg">{this.state.error}</p>}
         <p data-cy="order-display">Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
-        <button onClick={e => this.handleSubmit(e)} data-cy="submit-order-btn">
+        <button 
+          className="submit-btn form-btn"
+          onClick={e => this.handleSubmit(e)} 
+          data-cy="submit-order-btn">
           Submit Order
         </button>
       </form>

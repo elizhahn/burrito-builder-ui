@@ -1,0 +1,20 @@
+.form-btn {
+  border: none;
+  border-radius: 5px; 
+  margin: 5px; 
+  padding: 10px;
+  font-size: 1.0em;
+}
+
+.form-name-input {
+  height: 25px; 
+  border:thin solid rgb(254, 195, 1);
+}
+
+.ingredient-btn {
+  background-color: rgb(254, 195, 1);  
+}
+
+.submit-btn {
+  background-color: rgb(235, 10, 115);
+}
