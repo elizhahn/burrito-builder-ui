@@ -6,12 +6,20 @@ class OrderForm extends Component {
     this.props = props;
     this.state = {
       name: '',
-      ingredients: []
+      ingredients: [],
+      error: ''
     };
   }
 
   handleSubmit = e => {
     e.preventDefault();
+    if(!this.state.name) {
+      this.setState({error: "We need a name for the order"});
+  } else if(!this.state.ingredients.length) {
+      this.setState({error:"Please select at least one ingredient"})
+  } else {
+    //call order method here
+  }
     this.clearInputs();
   }
 
@@ -52,7 +60,7 @@ class OrderForm extends Component {
         />
 
         { ingredientButtons }
-
+        {this.state.error && <p>{this.state.error}</p>}
         <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
         <button onClick={e => this.handleSubmit(e)}>
