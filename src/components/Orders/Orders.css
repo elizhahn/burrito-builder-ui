@@ -1,12 +1,27 @@
+.orders {
+  margin: 20px; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+}
+
 .order {
-  border: 1px solid black;
+  border: 1px solid orange;
+  border-radius: 5px; 
   display: inline-block;
   margin: 10px;
+  padding: 20px; 
   background-color: #FFF;
+}
+
+.order-name { 
+  padding: 5px; 
+  border-bottom:thin solid orange; 
 }
 
 .ingredient-list {
   list-style-type: none;
   padding: 0;
   width: 150px;
+  font-size: 1.2em; 
 }
