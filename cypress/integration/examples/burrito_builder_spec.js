@@ -49,8 +49,10 @@ describe("Burrito Builder", () => {
   it("should show error messages if form not filled out correctly", () => {
     cy.get("[data-cy=submit-order-btn]").click();
     cy.get("[data-cy=form-error-msg]").contains("We need a name for the order");
+    cy.get("[data-cy=order-card]").should("have.length", 2);
     cy.get("[data-cy=order-name-input]").type("Sunny");
     cy.get("[data-cy=submit-order-btn]").click();
     cy.get("[data-cy=form-error-msg]").contains("Please select at least one ingredient");
+    cy.get("[data-cy=order-card]").should("have.length", 2);
   });
 });
